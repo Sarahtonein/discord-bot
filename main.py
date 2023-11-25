@@ -38,6 +38,7 @@ async def on_message(message):
 
     if "dxy" in content_lower and not message.author.bot:
         set_cooldown(message.author.id, message.channel.id)
+        await message.add_reaction("👎")
         messages = [f'🦅🦅🦅:flag_us::flag_us:', f'Cleanest shirt in the dirty pile they say', f'I"d like some freedom fries with my DXY', f'DUMP ET']
         await message.channel.send(random.choice(messages))
 
