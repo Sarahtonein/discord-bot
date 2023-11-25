@@ -44,7 +44,8 @@ async def on_message(message):
 
     elif "morning" in content_lower and not message.author.bot:
         set_cooldown(message.author.id, message.channel.id)
-        await message.channel.send(f'Good morning sunshine, the earth says Hello :white_sun_cloud:')
+        messages = [f'Good morning sunshine, the earth says hello. :white_sun_cloud:', f'Is it really though?', f'Time for some coffee or what? :coffee']
+        await message.channel.send(random.choice(messages))
 
     elif "bot" in content_lower and not message.author.bot:
         set_cooldown(message.author.id, message.channel.id)
