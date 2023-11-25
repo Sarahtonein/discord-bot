@@ -30,30 +30,38 @@ async def on_message(message):
         return
 
     if message.content.startswith("dxy"):
-        # makes it so you dont have to do extra work to choose a random message, random.choice() picks 1 element from a list at random
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
+
         messages = [f'🦅🦅🦅:flag_us::flag_us:', f'Cleanest shirt in the dirty pile they say', f'I"d like some freedom fries with my DXY', f'DUMP ET']
         await message.channel.send(random.choice(messages))
 
+    elif message.content.startswith("morning"):
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
 
-    if message.content.startswith("morning"):
         await message.channel.send(f'Good morning sunshine, the earth says Hello :white_sun_cloud:')
 
-    if "bot" in message.content and not message.author.bot:
+    elif "bot" in message.content and not message.author.bot:
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
+
         random_number = random.randint(0, 1)
         if random_number == 0:
             await message.channel.send(f'Who are you calling a bot, bot?')
         else:
             await message.channel.send(f'You rang?')
-    if "food" in message.content and not message.author.bot:
+
+    elif "food" in message.content and not message.author.bot:
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
+
         await message.channel.send(f'Go make yourself some food then, I ain`t doing it')
 
-    if "coffee" in message.content and not message.author.bot:
+    elif "coffee" in message.content and not message.author.bot:
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
+
         await message.channel.send(f'make me a cup too, bitch')
         
-    if message.content.startswith("ping"):
-        await message.channel.send(f'pong')
+    elif message.content.startswith("ping"):
+        cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
 
-    # Set a 45-second cooldown for the user and channel
-    cooldowns[cooldown_key] = datetime.utcnow() + timedelta(seconds=45)
+        await message.channel.send(f'pong')
 
 bot.run(os.getenv('TOKEN'))
