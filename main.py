@@ -42,7 +42,7 @@ async def on_message(message):
         messages = [f'🦅🦅🦅:flag_us::flag_us:', f'Cleanest shirt in the dirty pile they say', f'I"d like some freedom fries with my DXY', f'DUMP ET']
         await message.channel.send(random.choice(messages))
 
-    elif "morning" in content_lower and not message.author.bot:
+    elif ("morning" in content_lower or "gm" in content_lower) and not message.author.bot:
         set_cooldown(message.author.id, message.channel.id)
         messages = [f'Good morning sunshine, the earth says hello. :white_sun_cloud:', f'Is it really though?', f'Time for some coffee or what? :coffee']
         await message.channel.send(random.choice(messages))
